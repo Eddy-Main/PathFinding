@@ -6,7 +6,7 @@ Main::Main()
 }
 
 
-Main::~Main()
+Main::~Main() 
 {
 	// Seems like, wxwidgets already delete it by itself.
 	// m_frame->Destroy();
