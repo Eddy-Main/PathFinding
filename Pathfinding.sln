@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AlgorithmeTest", "AlgorithmeTest\AlgorithmeTest.vcxproj", "{437FB1AC-5E28-4824-8CD9-13109325D147}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pathfinding", "sources\Pathfinding.vcxproj", "{437FB1AC-5E28-4824-8CD9-13109325D147}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
