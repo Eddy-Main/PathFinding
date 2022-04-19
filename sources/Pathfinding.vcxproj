@@ -34,7 +34,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{437FB1AC-5E28-4824-8CD9-13109325D147}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>AlgorithmeTest</RootNamespace>
+    <RootNamespace>Pathfinding</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectName>Pathfinding</ProjectName>
   </PropertyGroup>
