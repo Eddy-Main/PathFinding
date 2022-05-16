@@ -1,0 +1,88 @@
+
+body {
+	color: black;
+}
+
+body a {
+	color: rgb(82,150,230);
+	text-decoration: none;
+}
+
+body a:visited {
+	color: rgb(106,94,235);
+}
+
+#toc_container {
+	background: rgb(200,200,200);
+	border: 1px solid black;
+	display: table;
+	font-size: 95%;
+	width: auto;
+	margin: 10px;
+	padding: 10px;
+	font-family: Arial, sans-serif;
+}
+
+.toc_title {
+	margin: 5px;
+	font-weight: 700;
+	text-align: center;
+	padding-bottom: 0px;
+}
+
+#toc_container li, #toc_container ul, #toc_container ul li, #divbody li, #divbody ul, #divbody ul li {
+	list-style: none none;
+	line-height: 25px;
+	padding-left: 0px;
+}
+
+#toc_container ul li ul, #divbody ul li ul {
+	padding-left: 20px;
+}
+
+
+
+
+.hr_params {
+	border-style: none;
+	border-top-style: solid;
+	border-color: black;
+	border-width: 1px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+
+.subhr_params {
+	padding-left: 20px;
+}
+ 
+.subtitle {
+	margin-bottom: 0px;
+	font-size: 24px;
+}
+
+
+.screenshot {
+	width: 50%;
+}
+
+.bigger-screenshot {
+	width: 75%;
+}
+
+.backToTop {
+	font-size: 12px;
+	vertical-align: middle;
+}
+
+.column {
+	float: left;
+	padding:0px;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}

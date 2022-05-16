@@ -208,8 +208,15 @@ void Board::resetBoard() {
 	{
 		for (int x = 0; x < width; x++)
 		{
-			clearBoard();
+			//clearBoard
+			listNodes[x][y]->isObstacle = false;
+			listNodes[x][y]->brushColor = *wxLIGHT_GREY;
+			listNodes[x][y]->isVisited = false;
+			listNodes[x][y]->parent = nullptr;
+			listNodes[x][y]->localGoal = INFINITY;
+			listNodes[x][y]->globalGoal = INFINITY;
 
+			//Begin and End update
 			beginNode = listNodes[width / 4][height / 2];
 			beginNode->brushColor = *wxGREEN;
 			endNode = listNodes[3 * width / 4][height / 2];
@@ -296,9 +303,7 @@ void Board::PaintAll(wxPaintEvent& evt ) {
 //		Alt	 + LeftClick --> Moves Ending Node.
 //		LeftClick  --> Place an Obstacle.
 //		RightClick --> Remove an Obstacle.
-void Board::mouseColorNode(int x, int y) {
-	bool isLeftDown = wxGetMouseState().LeftIsDown();
-	bool isRightDown = wxGetMouseState().RightIsDown();
+void Board::mouseColorNode(int x, int y, bool isLeftDown, bool isRightDown) {
 	bool isCtrlDown = wxGetKeyState(WXK_CONTROL);
 	bool isAltDown = wxGetKeyState(WXK_ALT);
 
@@ -372,6 +377,8 @@ void Board::OnResize(wxSize* newSize) {
 	{
 		nWidth = (newSize->x - 1) / nodeSize;
 		nHeight = (newSize->y - 1) / nodeSize;
+
+		if (nWidth == width && nHeight == height) return;
 	}
 
 	// Cell size changed.
@@ -382,7 +389,6 @@ void Board::OnResize(wxSize* newSize) {
 		nHeight = (currentSize.y - 1) / nodeSize;
 	}
 
-	if (nWidth == width && nHeight == height) return;
 
 	// Reset node list's parameters.
 	deallocateNodes();

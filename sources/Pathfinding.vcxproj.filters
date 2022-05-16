@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Presentation">
+      <UniqueIdentifier>{a7f0d718-31ef-4f50-8ff0-b8ed7415feb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presentation\Screenshot">
+      <UniqueIdentifier>{9bf78fa8-db54-48d8-a394-1687be2df38d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
@@ -41,5 +47,99 @@
     <ClCompile Include="Legend.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Presentation.html">
+      <Filter>Presentation</Filter>
+    </None>
+    <None Include="..\Presentation_styles.css">
+      <Filter>Presentation</Filter>
+    </None>
+    <None Include="..\README.md">
+      <Filter>Fichiers sources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Screenshot\AStar1.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\AStar2.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\BFS1.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\BFS2.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\CellSize10.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\CtrlAltLeftClick.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Default.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Dijkstra1.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Dijkstra2.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\EightWay.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Equation.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Equation2.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Equation3.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\ExecutionResults.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\FourWay.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\GifFrameRate0.gif">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\GifFrameRate40.gif">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\LeftClickDown.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Legend.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Maze1.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Maze2.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Maze3.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\OneBoard.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\RandomPoint.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\ResizeArrow.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\RightClickDown.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
+    <Image Include="..\Screenshot\Synchronize.png">
+      <Filter>Presentation\Screenshot</Filter>
+    </Image>
   </ItemGroup>
 </Project>

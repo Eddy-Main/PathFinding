@@ -8,7 +8,7 @@ END_EVENT_TABLE()
 
 
 // Creates the main window of the App, including its components.
-App::App() : wxFrame(nullptr, wxID_ANY, "Application A*",wxPoint(0,0),wxSize(1066,511))
+App::App() : wxFrame(nullptr, wxID_ANY, "Pathfinding App",wxPoint(0,0),wxSize(1108,511))
 {
 	// Widgets of the App, includes : Button, TextLabel, ComboBox, SpinCtrl.
 	// Buttons 
@@ -23,7 +23,7 @@ App::App() : wxFrame(nullptr, wxID_ANY, "Application A*",wxPoint(0,0),wxSize(106
 
 	wxStaticText* randomPointsLabel = new wxStaticText(this, wxID_ANY, "Random Points Generator");
 	wxSize*  randomPointsSize = new wxSize(100, 20);
-	wxButton* randomPointsBtn = new wxButton(this, wxID_ANY, "Random Points", wxDefaultPosition, *randomPointsSize);
+	wxButton* randomPointsBtn = new wxButton(this, wxID_ANY, "Add Points", wxDefaultPosition, *randomPointsSize);
 	randomPointsBtn->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &App::randomPointsGenerator, this);
 
 	wxSize*  resetSize = new wxSize(100, 20);
@@ -40,7 +40,7 @@ App::App() : wxFrame(nullptr, wxID_ANY, "Application A*",wxPoint(0,0),wxSize(106
 	wxStaticText* sleepTimeLabel = new wxStaticText(this, wxID_ANY, "Update Rate (ms)");
 	wxSize*  sleepTimeSize = new wxSize(60, 20);
 	wxSpinCtrl* sleepTimeSpin = new wxSpinCtrl(this, wxID_ANY, "", wxDefaultPosition, *sleepTimeSize);
-	sleepTimeSpin->SetMax(40);
+	sleepTimeSpin->SetMax(50);
 	sleepTimeSpin->Bind(wxEVT_TEXT, &App::changeSleepTime, this);
 
 	wxStaticText* nodeSizeLabel = new wxStaticText(this, wxID_ANY, "Cell Size (px)");
@@ -53,50 +53,50 @@ App::App() : wxFrame(nullptr, wxID_ANY, "Application A*",wxPoint(0,0),wxSize(106
 
 
 
-	// ComboBox
+	// Choices
 
 	wxStaticText* algoLabelA = new wxStaticText(this, wxID_ANY, "Algorithm");
-	wxSize*  comboASize = new wxSize(100, 20);
+	wxSize*  choiceASize = new wxSize(100, 20);
 	wxArrayString* algorithmAList = new wxArrayString();
 	algorithmAList->Add("A*");	 // A Star
 	algorithmAList->Add("BFS");   // Breadth First Search
 	algorithmAList->Add("Dijkstra");   // Depth First Search
 
-	wxComboBox* algorithmABox = new wxComboBox(this, wxID_ANY, "--Select", wxDefaultPosition, *comboASize, *algorithmAList);
-	algorithmABox->SetSelection(0);
+	wxChoice* algorithmAChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, *choiceASize, *algorithmAList);
+	algorithmAChoice->SetSelection(0);
 
 
 	wxStaticText* algoLabelB = new wxStaticText(this, wxID_ANY, "Algorithm");
-	wxSize*  comboBSize = new wxSize(100, 20);
+	wxSize*  choiceBSize = new wxSize(100, 20);
 	wxArrayString* algorithmBList = new wxArrayString();
 	algorithmBList->Add("A*");	 // A Star
 	algorithmBList->Add("BFS");   // Breadth First Search
 	algorithmBList->Add("Dijkstra");   // Depth First Search
 	algorithmBList->Add("None");   // For Solo board run.
 
-	wxComboBox* algorithmBBox = new wxComboBox(this, wxID_ANY, "--Select", wxDefaultPosition, *comboBSize, *algorithmBList);
-	algorithmBBox->SetSelection(1);
+	wxChoice* algorithmBChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, *choiceBSize, *algorithmBList);
+	algorithmBChoice->SetSelection(1);
 
-	algorithmBoxes.push_back(algorithmABox);
-	algorithmBoxes.push_back(algorithmBBox);
+	algorithmChoices.push_back(algorithmAChoice);
+	algorithmChoices.push_back(algorithmBChoice);
 
 	wxStaticText* directionLabelA = new wxStaticText(this, wxID_ANY, "Direction");
-	wxSize*  directionComboASize = new wxSize(100, 20);
+	wxSize*  directionChoiceASize = new wxSize(100, 20);
 	wxArrayString* directionList = new wxArrayString();
 	directionList->Add("4-way");	 // + shaped directions
 	directionList->Add("8-way");	 // 8 way directions
 
-	wxComboBox* directionABox = new wxComboBox(this, wxID_ANY, "--Select", wxDefaultPosition, *directionComboASize, *directionList);
-	directionABox->SetSelection(1);
+	wxChoice* directionAChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, *directionChoiceASize, *directionList);
+	directionAChoice->SetSelection(1);
 
 
 	wxStaticText* directionLabelB = new wxStaticText(this, wxID_ANY, "Direction");
-	wxSize*  directionComboBSize = new wxSize(100, 20);
-	wxComboBox* directionBBox = new wxComboBox(this, wxID_ANY, "--Select", wxDefaultPosition, *directionComboBSize, *directionList);
-	directionBBox->SetSelection(1);
+	wxSize*  directionChoiceBSize = new wxSize(100, 20);
+	wxChoice* directionBChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, *directionChoiceBSize, *directionList);
+	directionBChoice->SetSelection(1);
 
-	directionBoxes.push_back(directionABox);
-	directionBoxes.push_back(directionBBox);
+	directionChoices.push_back(directionAChoice);
+	directionChoices.push_back(directionBChoice);
 
 
 	// Lone Text Labels
@@ -111,15 +111,15 @@ App::App() : wxFrame(nullptr, wxID_ANY, "Application A*",wxPoint(0,0),wxSize(106
 	// Boards
 	wxStaticBoxSizer* boardASetupBox = new wxStaticBoxSizer(wxVERTICAL, this, "Board A");
 	boardASetupBox->Add(algoLabelA, 0, wxWEST | wxNORTH | wxEAST, 5);
-	boardASetupBox->Add(algorithmABox, 0, wxSOUTH, 10);
+	boardASetupBox->Add(algorithmAChoice, 0, wxSOUTH, 10);
 	boardASetupBox->Add(directionLabelA, 0, wxWEST | wxEAST, 5);
-	boardASetupBox->Add(directionABox, 0, wxSOUTH, 5);
+	boardASetupBox->Add(directionAChoice, 0, wxSOUTH, 5);
 
 	wxStaticBoxSizer* boardBSetupBox = new wxStaticBoxSizer(wxVERTICAL, this, "Board B");
 	boardBSetupBox->Add(algoLabelB, 0, wxWEST | wxNORTH | wxEAST, 5);
-	boardBSetupBox->Add(algorithmBBox, 0, wxSOUTH, 10);
+	boardBSetupBox->Add(algorithmBChoice, 0, wxSOUTH, 10);
 	boardBSetupBox->Add(directionLabelB, 0, wxWEST | wxEAST, 5);
-	boardBSetupBox->Add(directionBBox, 0, wxSOUTH, 5);
+	boardBSetupBox->Add(directionBChoice, 0, wxSOUTH, 5);
 
 
 	// Launch Setup
@@ -235,10 +235,10 @@ App::App() : wxFrame(nullptr, wxID_ANY, "Application A*",wxPoint(0,0),wxSize(106
 	delete  randomPointsSize;
 
 	delete resetSize;
-	delete comboASize;
-	delete comboBSize;
-	delete directionComboASize;
-	delete directionComboBSize;
+	delete choiceASize;
+	delete choiceBSize;
+	delete directionChoiceASize;
+	delete directionChoiceBSize;
 	delete sleepTimeSize;
 	delete nodeSizeSize;
 }
@@ -250,12 +250,12 @@ App::~App()
 	delete myBoards[1];
 	myBoards.clear();
 	delete startBtn;
-	delete algorithmBoxes[0];
-	delete algorithmBoxes[1];
-	algorithmBoxes.clear();
-	delete directionBoxes[0];
-	delete directionBoxes[1];
-	directionBoxes.clear();
+	delete algorithmChoices[0];
+	delete algorithmChoices[1];
+	algorithmChoices.clear();
+	delete directionChoices[0];
+	delete directionChoices[1];
+	directionChoices.clear();
 	stopwatch.clear();
 	threadsDone.clear();
 	delete resultsLabelA;
@@ -269,8 +269,8 @@ void App::OnStart(wxCommandEvent &evt)
 	vector<thread> threads;
 	for (int i = 0; i < 2; i++) {
 		threadsDone[i] = false;
-		int algorithm = algorithmBoxes[i]->GetSelection();
-		int direction = directionBoxes[i]->GetSelection();
+		int algorithm = algorithmChoices[i]->GetSelection();
+		int direction = directionChoices[i]->GetSelection();
 
 		threads.push_back(thread(&App::callAlgorithm, this, i, algorithm, direction));
 
@@ -435,7 +435,7 @@ void App::algorithmAStar(Board* board, int *visitedCellCount)
 		currentNode = listNotTestedNode.front();
 		currentNode->isVisited = true;
 
-		// Remove the all occurence of Node in the list.
+		// Remove all occurences of currentNode in the list.
 		listNotTestedNode.remove(currentNode);
 
 		if (currentNode != board->beginNode && currentNode != board->endNode)
@@ -781,7 +781,7 @@ void App::OnBoardMousePress(wxMouseEvent &evt) {
 	if (boardX >= nWidth || boardY >= nHeight) { evt.Skip(); return; }
 
 	for (Board* board : myBoards)
-		board->mouseColorNode(boardX, boardY);
+		board->mouseColorNode(boardX, boardY, isLeftDown, isRightDown);
 
 	evt.Skip();
 

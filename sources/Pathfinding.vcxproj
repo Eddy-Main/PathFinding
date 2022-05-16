@@ -30,6 +30,40 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Legend.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Presentation.html" />
+    <None Include="..\Presentation_styles.css" />
+    <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Screenshot\AStar1.png" />
+    <Image Include="..\Screenshot\AStar2.png" />
+    <Image Include="..\Screenshot\BFS1.png" />
+    <Image Include="..\Screenshot\BFS2.png" />
+    <Image Include="..\Screenshot\CellSize10.png" />
+    <Image Include="..\Screenshot\CtrlAltLeftClick.png" />
+    <Image Include="..\Screenshot\Default.png" />
+    <Image Include="..\Screenshot\Dijkstra1.png" />
+    <Image Include="..\Screenshot\Dijkstra2.png" />
+    <Image Include="..\Screenshot\EightWay.png" />
+    <Image Include="..\Screenshot\Equation.png" />
+    <Image Include="..\Screenshot\Equation2.png" />
+    <Image Include="..\Screenshot\Equation3.png" />
+    <Image Include="..\Screenshot\ExecutionResults.png" />
+    <Image Include="..\Screenshot\FourWay.png" />
+    <Image Include="..\Screenshot\GifFrameRate0.gif" />
+    <Image Include="..\Screenshot\GifFrameRate40.gif" />
+    <Image Include="..\Screenshot\LeftClickDown.png" />
+    <Image Include="..\Screenshot\Legend.png" />
+    <Image Include="..\Screenshot\Maze1.png" />
+    <Image Include="..\Screenshot\Maze2.png" />
+    <Image Include="..\Screenshot\Maze3.png" />
+    <Image Include="..\Screenshot\OneBoard.png" />
+    <Image Include="..\Screenshot\RandomPoint.png" />
+    <Image Include="..\Screenshot\ResizeArrow.png" />
+    <Image Include="..\Screenshot\RightClickDown.png" />
+    <Image Include="..\Screenshot\Synchronize.png" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{437FB1AC-5E28-4824-8CD9-13109325D147}</ProjectGuid>

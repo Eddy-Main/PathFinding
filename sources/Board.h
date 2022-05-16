@@ -92,7 +92,7 @@ public :
 
 
 	void PaintAll(wxPaintEvent& evt);
-	void mouseColorNode(int x, int y);
+	void mouseColorNode(int x, int y, bool isLeftDown, bool isRightDown);
 	void OnResize(wxSize* newSize);
 	void Sleep(int time);
 	void OnEraseBackground(wxEraseEvent &event);

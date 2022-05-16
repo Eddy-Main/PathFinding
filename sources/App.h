@@ -31,8 +31,8 @@ public:
 public :
 	vector<Board*> myBoards;
 	wxButton* startBtn;
-	vector<wxComboBox*> algorithmBoxes;
-	vector<wxComboBox*> directionBoxes;
+	vector<wxChoice*> algorithmChoices;
+	vector<wxChoice*> directionChoices;
 	wxSpinCtrl* randomSpin;
 	int sleepTime = 0;
 	vector<string> stopwatch = { "", "" };

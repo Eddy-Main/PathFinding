@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="Presentation_styles.css">
+	<title> Pathfinding Documentation </title>
+</head>
+
+<body style="background-color:rgb(171,171,171);">
+
+	<h1>Pathfinding Documentation</h1>
+	<p>This is a simple html page showing how the Pathfinding App works.</p>
+
+
+	<div id="toc_container">
+		<p class="toc_title">Contents</p>
+		<ul>
+			<li><a href="#Legend_Header">Color Legend</a></li>
+			<li><a href="#Controls_Header">Controls</a></li>
+			<li>
+				<ul>
+					<li><a href="#Boards_Header">On the Boards</a></li>
+					<li><a href="#Window_Header">Window resize</a></li>
+				</ul>
+			</li>
+			<li><a href="#Launch_Header">Launch Setup</a></li>
+			<li>
+				<ul>
+					<li><a href="#Algorithm_Header">Algorithms</a></li>
+					<li><a href="#Direction_Header">Directions</a></li>
+					<li><a href="#UpdateRate_Header">Update Rate</a></li>
+					<li><a href="#CellSize_Header">Cell Resize</a></li>
+				</ul>
+			</li>
+			<li><a href="#Options_Header">Options</a></li>
+			<li>
+				<ul>
+					<li><a href="#Maze_Header">Random Maze Generator</a></li>
+					<li><a href="#Points_Header">Random Points Generator</a></li>
+				</ul>
+			</li>
+			<li><a href="#Results_Header">Execution Results</a></li>
+		</ul>
+	</div>
+
+
+	<div  id="divbody">
+		<ul>
+			<li>
+				<p id="Legend_Header" class="subtitle">
+					&nbspColor Legend <a class="backToTop" href="#toc_container">[top]</a>
+				</p>
+				<hr class="hr_params" /><br />
+
+				<div>
+					<img class="screenshot" src="./Screenshot/Legend.png" alt="Color_Legend.png">
+				</div>
+
+			</li>
+			<li>
+				<p id="Controls_Header" class="subtitle">
+					&nbspControls <a class="backToTop" href="#toc_container">[top]</a>
+				</p>
+				<hr class="hr_params" />
+				<ul>
+					<li>
+						<p id="Boards_Header" class="subtitle">
+							&nbspOn the Boards <a class="backToTop" href="#toc_container">[top]</a>
+						</p>
+						<hr class="hr_params" />
+						<div>
+							<p>
+								At launch, the App looks like this :<br />
+								<img class="bigger-screenshot" src="./Screenshot/Default.png" alt="Default"><br />
+								By left clicking on a cell, you can place an obstacle on it.<br />
+								<img class="screenshot" src="./Screenshot/LeftClickDown.png" alt="OneBoardLCDown"><br />
+
+								By right clicking on a cell with an obstacle, you can clear the cell.<br />
+								<img class="screenshot" src="./Screenshot/RightClickDown.png" alt="OneBoardRCDown"><br />
+
+								And by pressing Ctrl or Alt while left clicking, you can change the location of the starting or ending point respectively.<br />
+								It can be moved on either obstacles or available cells.<br />
+								<img class="screenshot" src="./Screenshot/CtrlAltLeftClick.png" alt="OneBoardRCDown"><br />
+
+								All actions on one of the board is reflected on the other one.<br />
+								<img class="bigger-screenshot" src="./Screenshot/Synchronize.png" alt="Synchronization"><br />
+							</p>
+						</div>
+					</li>
+					<li>
+						<p id="Resize_Header" class="subtitle">
+							&nbspWindow Resize <a class="backToTop" href="#toc_container">[top]</a>
+						</p>
+						<hr class="hr_params" />
+						<div>
+							<p>
+								The window can be resized. If the number of lines or colums changes, it resets both boards.<br />
+								Here is an example of the smallest window available : <br />
+								<img style="width:90%" src="./Screenshot/ResizeArrow.png" alt="MinSize"><br />
+
+							</p>
+						</div>
+					</li>
+				</ul>
+
+			</li>
+			<li>
+				<p id="Launch_Header" class="subtitle">
+					&nbspLaunch <a class="backToTop" href="#toc_container">[top]</a>
+				</p>
+				<hr class="hr_params" />
+
+				<ul>
+					<li>
+						<p id="Algorithms_Header" class="subtitle">
+							&nbspAlgorithms <a class="backToTop" href="#toc_container">[top]</a>
+						</p>
+						<hr class="hr_params" />
+						<div>
+							<div class="row"><br />
+								I only implemented 3 types of algorithm so far :<br />
+								The A* search algorithm, the Breadth-First search algortihm and the Dijkstra algorithm.<br />
+
+								<div class="column" style="width:600px; padding-right:100px">
+									<br />
+									<font size="+2" style="font-weight:bold">A* search algorithm</font>
+									<br />
+									<br />
+									A* search is an algorithm which places a certain weight
+									on each of the nodes it searches on.
+									<br />
+									For a random cell, the weight of its neighbours is assigned as :<br /><br />
+									<img style="width:75%" src="./Screenshot/Equation.png" alt="Equation"><br />
+
+									With : <br />
+
+									<img style="width:100%" src="./Screenshot/Equation2.png" alt="Equation 2nd Part"><br />
+
+									<br />
+									Each time a specific node is searched,
+									the algorithm assigns a weight to its neighbouring nodes
+									and places those in the waiting queue.<br />
+									Then, it sorts the queue from 'lightest' to 'heaviest'.<br />
+									With the lightest node being the next one to be searched.<br />
+									This process is repeated until a path is found.<br />
+									<br />
+								</div>
+								<div class="column" style="width:750px;"><br />
+									<img style="width:49%" src="./Screenshot/AStar1.png" alt="A Star 1">
+									<img style="width:49%" src="./Screenshot/AStar2.png" alt="A Star 2">
+								</div>
+								<div class="column" style="width:600px; padding-right:100px">
+									<br />
+									<font size="+2" style="font-weight:bold">BFS search algorithm</font>
+									<br />
+									<br />
+									The Breadth-First search uses follows the First-In-First-Out principle.<br />
+									Each time a specific node is searched, its neighbours are added to the queue.<br />
+									The first node in the queue is then searched.<br />
+									This process is repeated until a path is found.<br />
+									<br />
+								</div>
+								<div class="column" style="width:750px;"><br />
+									<img style="width:49%" src="./Screenshot/BFS1.png" alt="BFS 1">
+									<img style="width:49%" src="./Screenshot/BFS2.png" alt="BFS 2">
+								</div>
+								<div class="column" style="width:600px; padding-right:100px">
+									<br />
+									<font size="+2" style="font-weight:bold">Dijkstra algorithm</font>
+									<br />
+									<br />
+									The Dijkstra algorithm is similar to the A* search algorithm,
+									as it also assigns weights to nodes and sorts the queue before choosing the next node.<br />
+									The difference between both algorithm is the way each node's weight is calculated.<br />
+									It doesn't take into account the distance between the neighbour node and the goal.<br />
+									<br />
+									The algorithm assign the weight by adding :<br /><br />
+									<img style="width:100%" src="./Screenshot/Equation3.png" alt="Equation 2nd Part"><br />
+									<br />
+									Each time a specific node is searched, the algorithm assigns a weight to its neighbouring nodes
+									and places those in the waiting queue.<br />
+									Then, it sorts the queue from 'lightest' to 'heaviest'.<br />
+									With the lightest node being the next one to be searched.<br />
+									This process is repeated until a path is found.<br />
+									<br />
+
+								</div>
+								<div class="column" style="width:750px;"><br />
+									<img style="width:49%" src="./Screenshot/Dijkstra1.png" alt="Dijkstra 1">
+									<img style="width:49%" src="./Screenshot/Dijkstra2.png" alt="Dijkstra 2">
+								</div>
+								<br />
+							</div>
+						</div>
+					</li>
+					<li>
+						<p id="Direction_Header" class="subtitle">
+							&nbspDirections <a class="backToTop" href="#toc_container">[top]</a>
+						</p>
+						<hr class="hr_params" />
+
+						<div class="row"><br />
+							Changes cells' neighbours, making algorithms move either : only horizontally or vertically, or also diagonally. <br />
+							<div class="column">
+								<img class="bigger-screenshot" src="./Screenshot/FourWay.png" alt="FourWay">
+							</div>
+							<div class="column">
+								<img class="bigger-screenshot" src="./Screenshot/EightWay.png" alt="EightWay">
+							</div>
+						</div>
+
+
+					</li>
+
+					<li>
+						<p id="UpdateRate_Header" class="subtitle">
+							&nbspUpdate Rate <a class="backToTop" href="#toc_container">[top]</a>
+						</p>
+						<hr class="hr_params" />
+
+						<div class="row"><br />
+							Increases or reduces the speed of each algorithms. <br />
+
+							<div class="column" style="padding-right:60px">
+								<img style="width:100%" src="./Screenshot/GifFrameRate0.gif" alt="Gif of Frame Rate at 0ms">
+							</div>
+							<div class="column" style="padding-left:60px">
+								<img style="width:100%" src="./Screenshot/GifFrameRate40.gif" alt="Gif of Frame Rate at 40ms">
+							</div>
+						</div>
+
+					</li>
+
+					<li>
+						<p id="CellSize_Header" class="subtitle">
+							&nbspCell Resize <a class="backToTop" href="#toc_container">[top]</a>
+						</p>
+						<hr class="hr_params" />
+
+						<div class="row"><br />
+							Changes cells' size (between 10px and 40px) and resets both boards. <br />
+							<div class="column">
+								<img class="bigger-screenshot" src="./Screenshot/CellSize10.png" alt="CellSize10">
+							</div>
+							<div class="column">
+								<img class="bigger-screenshot" src="./Screenshot/OneBoard.png" alt="CellSize40">
+							</div>
+						</div>
+
+					</li>
+				</ul>
+			</li>
+
+
+			<li>
+				<p id="Options_Header" class="subtitle">
+					&nbspOptions <a class="backToTop" href="#toc_container">[top]</a>
+				</p>
+				<hr class="hr_params" />
+
+				<ul>
+					<li>
+						<p id="Maze_Header" class="subtitle">
+							&nbspRandom Maze Generator<a class="backToTop" href="#toc_container">[top]</a>
+						</p>
+						<hr class="hr_params" />
+
+						<div class="row">
+							<br />
+							Randomly creates a labyrinth and randomly place the starting and ending points. <br />
+
+							<div style="width:1500px">
+								<img style="width:24%; padding-right:10px" src="./Screenshot/Maze1.png" alt="Random Maze 1">
+								<img style="width:24%; padding-right:10px" src="./Screenshot/Maze2.png" alt="Random Maze 2">
+								<img style="width:25.2%" src="./Screenshot/Maze3.png" alt="Random Maze 3">
+							</div>
+						</div>
+
+					</li>
+
+					<li>
+						<p id="Points_Header" class="subtitle">
+							&nbspRandom Points Generator <a class="backToTop" href="#toc_container">[top]</a>
+						</p>
+						<hr class="hr_params" />
+
+						<div><br />
+							Randomly places a designated amount of obstacle on the board. <br />
+							<img style="width:40%" src="./Screenshot/RandomPoint.png" alt="RandomPoints">
+						</div>
+
+					</li>
+				</ul>
+
+			</li>
+
+			<li>
+				<p id="Results_Header" class="subtitle">
+					&nbspExecution Results <a class="backToTop" href="#toc_container">[top]</a>
+				</p>
+				<hr class="hr_params" />
+				<div><br />
+					Shows the execution time and the number of checked cells. <br />
+					<img src="./Screenshot/ExecutionResults.png" alt="Execution Results">
+				</div>
+
+			</li>
+		</ul>
+</div>
+</body>
+</html>
